@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-image: url('ezgif.com-video-to-gif-converter (1).gif');
+    background-position: center;
+    background-size: 2705px;
+    background-repeat: repeat;
+    /* Remove overflow: hidden to enable scrolling */
+    overflow-y: auto; /* Allows vertical scrolling */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f9dada;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.file-upload {
+    margin: 15px 0;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+#matched-content, #suggestions {
+    list-style-type: none;
+    padding: 0;
+}
+
+#matched-content li, #suggestions li {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-left: 4px solid #28a745;
+}

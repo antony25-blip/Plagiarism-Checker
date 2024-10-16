@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Document Plagiarism Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Enhanced Document Plagiarism Checker</h1>
+        
+        <div class="file-upload">
+            <label for="doc1">Upload document (TXT, DOCX):</label>
+            <input type="file" id="doc1" accept=".txt,.docx">
+        </div>
+
+        <div class="file-upload">
+            <label for="folder">Upload folder of documents (TXT, DOCX):</label>
+            <!-- Use webkitdirectory to allow selecting an entire folder -->
+            <input type="file" id="folder" accept=".txt,.docx" webkitdirectory multiple>
+        </div>
+
+        <button id="checkPlagiarism">Check for Plagiarism</button>
+
+        <div id="error">
+            <h2>Plagiarism Results:</h2>
+            <div id="plagiarism-results"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
