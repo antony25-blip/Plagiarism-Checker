@@ -1,63 +1,266 @@
+:root {
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --accent: #4895ef;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --success: #4cc9f0;
+    --danger: #f72585;
+    --warning: #f8961e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-image: url('ezgif.com-video-to-gif-converter (1).gif');
-    background-position: center;
-    background-size: 2705px;
-    background-repeat: repeat;
-    /* Remove overflow: hidden to enable scrolling */
-    overflow-y: auto; /* Allows vertical scrolling */
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #f9dada;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    max-width: 1200px; /* Increased from 800px to 1200px for a larger container */
+    width: 90%; /* Ensures responsiveness */
+    margin: 2rem auto;
+    padding: 3rem; /* Increased padding for more space */
+    background: white;
+    border-radius: 20px; /* Slightly larger radius for a modern look */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    min-height: 500px; /* Added minimum height for a taller container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;}
 
 h1 {
     text-align: center;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 2.5rem;
 }
 
-.file-upload {
-    margin: 15px 0;
+.upload-section {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+.upload-box {
+    flex: 1;
+    max-width: 400px; /* Fixed max-width for each box to control size */
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 2rem; /* Increased padding for more space */
+    text-align: center;
+    transition: all 0.3s ease;
     cursor: pointer;
+    background: var(--light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-height: 200px; /* Minimum height for each box */
 }
 
-button:hover {
-    background-color: #218838;
+.upload-box:hover {
+    border-color: var(--accent);
+    background: rgba(72, 149, 239, 0.05);
 }
 
-#result {
-    margin-top: 20px;
+.upload-box.active {
+    border-color: var(--success);
+    background: rgba(76, 201, 240, 0.05);
 }
 
-#matched-content, #suggestions {
-    list-style-type: none;
-    padding: 0;
+.upload-box i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
 }
 
-#matched-content li, #suggestions li {
-    background: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-left: 4px solid #28a745;
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.file-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+.file-details {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    word-break: break-word;
+}
+
+.btn {
+    display: block;
+    width: 300px;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.btn:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.error-message {
+    color: var(--danger);
+    text-align: center;
+    margin: 1rem 0;
+    display: none;
+}
+
+.results-section {
+    display: none;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.results-title {
+    color: var(--primary);
+}
+
+.progress-container {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--success);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+#plagiarism-results .result-item {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+#plagiarism-results .result-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.filename {
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.percentage {
+    font-weight: 600;
+}
+
+.percentage.high {
+    color: var(--danger);
+}
+
+.percentage.medium {
+    color: var(--warning);
+}
+
+.percentage.low {
+    color: var(--success);
+}
+
+.matches, .suggestions {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.match {
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.suggestions {
+    color: var(--warning);
+}
+
+@media (max-width: 768px) {
+    .upload-section {
+        flex-direction: column;
+    }
+    
+    .container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
 }

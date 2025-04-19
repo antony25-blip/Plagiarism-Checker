@@ -3,29 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Document Plagiarism Checker</title>
+    <title>Plagiarism Checker Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
     <div class="container">
-        <h1>Enhanced Document Plagiarism Checker</h1>
+        <h1><i class="fas fa-search"></i> Plagiarism Checker Pro</h1>
         
-        <div class="file-upload">
-            <label for="doc1">Upload document (TXT, DOCX):</label>
-            <input type="file" id="doc1" accept=".txt,.docx">
+        <div class="upload-section">
+            <div class="upload-box" id="mainDocBox">
+                <i class="fas fa-file-alt"></i>
+                <label class="file-label">Main Document</label>
+                <input type="file" id="doc1" class="file-input" accept=".txt,.docx,.jpg,.png,.pdf">
+                <p class="file-info">Click to upload or drag & drop</p>
+                <div class="file-details" id="mainDocDetails"></div>
+            </div>
+            
+            <div class="upload-box" id="folderBox">
+                <i class="fas fa-folder-open"></i>
+                <label class="file-label">Comparison Folder</label>
+                <input type="file" id="folder" class="file-input" accept=".txt,.docx,.jpg,.png,.pdf" webkitdirectory multiple>
+                <p class="file-info">Click to upload folder</p>
+                <div class="file-details" id="folderDetails"></div>
+            </div>
         </div>
-
-        <div class="file-upload">
-            <label for="folder">Upload folder of documents (TXT, DOCX):</label>
-            <!-- Use webkitdirectory to allow selecting an entire folder -->
-            <input type="file" id="folder" accept=".txt,.docx" webkitdirectory multiple>
+        
+        <button id="checkPlagiarism" class="btn" disabled>
+            <i class="fas fa-check-circle"></i> Check for Plagiarism
+        </button>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing documents...</p>
         </div>
-
-        <button id="checkPlagiarism">Check for Plagiarism</button>
-
-        <div id="error">
-            <h2>Plagiarism Results:</h2>
+        
+        <div class="error-message" id="errorMessage"></div>
+        
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2 class="results-title"><i class="fas fa-chart-bar"></i> Plagiarism Results</h2>
+                <div id="summary"></div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
             <div id="plagiarism-results"></div>
         </div>
     </div>
